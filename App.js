@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import CategoriesScreen from './app/screens/CategoriesScreen';
 import LanguageScreen from './app/screens/LanguageScreen';
+import DetailScreen from './app/screens/DetailScreen';
 
 const Stack = createStackNavigator()
 //const Tab = createBottomTabNavigator()
@@ -15,6 +16,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{header: () => null}}>
         <Stack.Screen name='Language' component={LanguageScreen} />
         <Stack.Screen name='Categories' component={CategoriesScreen} />
+        <Stack.Screen name='Detail' component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
 

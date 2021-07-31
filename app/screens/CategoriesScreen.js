@@ -13,7 +13,8 @@ export default function CategoriesScreen({route, navigation}) {
                 {categories.map((item, index) => (
                     <TouchableOpacity
                         key={index}
-                        style={styles.category}>
+                        style={styles.category}
+                        onPress={() => navigation.navigate('Detail', {category: item.name})}>
                         <Text style={styles.name}>{item.name}</Text>
                     </TouchableOpacity>
                 ))}
