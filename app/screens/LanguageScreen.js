@@ -1,6 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
 
 import colors from '../config/colors';
 import Heading from '../components/Heading';
@@ -31,11 +31,13 @@ const languages = [
     },
 ]
 
-export default function CategoriesScreen() {
+
+
+export default function LanguageScreen({navigation}) {
     const [text, onChangeText] = React.useState('');
 
     const Item = ({ item }) => (
-        <View style={language.item}>
+        <TouchableOpacity style={language.item} onPress={() => navigation.navigate('Categories', {code: item.code})}>
             <Text style={language.code}>{item.code}</Text>
             <Text style={language.name}>{item.name} ({item.native})</Text>
 
@@ -43,14 +45,12 @@ export default function CategoriesScreen() {
                 <Heart size={20} color={'darkred'} />
                 <Download size={20} color={'darkblue'} />
             </View>
-        </View>
+        </TouchableOpacity>
     );
-
-
 
     return (
         <View style={styles.container}>
-            <Heading text={'Select translated language'} />
+            <Heading text={'Select translated language'} navigation={navigation} back={false}/>
 
             <Text style={styles.subHeading}>Language by your location </Text>
             <Item item={{

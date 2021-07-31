@@ -1,20 +1,32 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Button } from 'react-native'
+import { AntDesign } from '@expo/vector-icons';
 
-const Heading = ({ text }) => {
+const Heading = ({ text, navigation, back = true }) => {
     return (
-        <Text style={styles.text}>{text}</Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>{text}</Text>
+            {back &&
+            <AntDesign name="back" size={24} color="darkblue" style={styles.back} onPress={() => navigation.goBack()} />}
+        </View>
     )
 }
 
 export default Heading
 
 const styles = StyleSheet.create({
-    text: {
-        fontSize: 20,
-        fontWeight: 'bold',
+    container: {
         paddingTop: 55,
         marginBottom: 20,
-        textAlign: 'center',
     },
+    text: {
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    back: {
+        position: 'absolute',
+        left: 10,
+        bottom:0,
+    }
 })

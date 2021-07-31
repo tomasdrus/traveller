@@ -1,14 +1,13 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Button } from 'react-native'
 import colors from '../config/colors';
 import Heading from '../components/Heading';
 
-export default function CategoriesScreen() {
-
+export default function CategoriesScreen({route, navigation}) {
     return (
         <View style={styles.container}>
-            <Heading text={'Select your category'} />
+            <Heading text={`Select your category (${route.params.code})`} navigation={navigation} />
 
             <View style={styles.categoryWrapper}>
                 {categories.map((item, index) => (
