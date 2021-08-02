@@ -6,19 +6,26 @@ import { AntDesign } from '@expo/vector-icons';
 import Heading from '../components/Heading';
 
 import colors from '../config/colors';
-import { phrases, words } from '../data/translations';
+import { phrasesList , words } from '../data/translations';
 
 export default function CategoriesScreen({route, navigation}) {
     const [show, setShow] = useState({phrases : true, words : true})
+    const [phrases, setPhrase] = useState(phrasesList)
 
     const showHandler = (type) => {
         //setShow({...show, [type] : !show[type]})
-
         let showCopy = {...show, [type] : !show[type]}
         if(!showCopy.phrases && !showCopy.words)
             type === 'phrases' ? showCopy.words = true : showCopy.phrases = true
         
         setShow(showCopy)
+    }
+
+    const likeHandler = (id) => {
+        let phrasesCopy =[...phrases]
+        let index = phrasesCopy.findIndex((obj => obj.id === id));
+        phrasesCopy[index].liked = !phrases[index].liked
+        setPhrase(phrasesCopy)
     }
 
     return (
@@ -42,9 +49,8 @@ export default function CategoriesScreen({route, navigation}) {
                                 <Text style={styles.itemTranslated}>{item.translated}</Text>
                             </View>
 
-                            {item.liked ?
-                            <AntDesign name="heart" size={22} color="red" /> : 
-                            <AntDesign name="hearto" size={22} color="red" />}
+                            <AntDesign name={item.liked ? 'heart' : 'hearto'} size={22} color="red" onPress={() => likeHandler(item.id)} />
+
                             
                         </View >
                 )}}
