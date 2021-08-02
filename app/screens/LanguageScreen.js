@@ -42,8 +42,8 @@ export default function LanguageScreen({navigation}) {
             <Text style={language.name}>{item.name} ({item.native})</Text>
 
             <View style={language.icons}>
-                <Heart size={20} color={'darkred'} />
-                <Download size={20} color={'darkblue'} />
+                <Heart size={20} color={'red'} />
+                <Download size={20} color={colors.primary} />
             </View>
         </TouchableOpacity>
     );
@@ -71,6 +71,7 @@ export default function LanguageScreen({navigation}) {
                 data={languages}
                 renderItem={Item}
                 keyExtractor={item => item.code}
+                showsVerticalScrollIndicator={false}
             />
 
             <StatusBar style="auto" />
@@ -81,7 +82,7 @@ export default function LanguageScreen({navigation}) {
 
 const language = StyleSheet.create({
     item: {
-        backgroundColor: colors.gray100,
+        backgroundColor: colors.white,
         paddingVertical: 10,
         paddingHorizontal: 15,
         marginVertical: 5,
@@ -114,11 +115,12 @@ const language = StyleSheet.create({
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 15,
+        flex: 1,
     },
     input: {
         height: 40,
         borderWidth: 1,
-        borderColor: '#c5c5c5',
+        borderColor: colors.black,
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 15,

@@ -1,13 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
-import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'; 
 
 const Heading = ({ text, navigation, back = true }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{text}</Text>
             {back &&
-            <AntDesign name="back" size={24} color="darkblue" style={styles.back} onPress={() => navigation.goBack()} />}
+            <Ionicons name="arrow-back" size={26} color="#15CAF2" style={styles.back} onPress={() => navigation.goBack()} />}
         </View>
     )
 }
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     back: {
         position: 'absolute',
         left: 10,
-        bottom:0,
+        bottom: -2,
     }
 })
