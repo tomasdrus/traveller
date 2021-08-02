@@ -47,6 +47,18 @@ export const phrasesList = [
         translated: 'What does _____ mean?',
         liked: false,
     },
+    {
+        id: 9, 
+        native: 'Kde nájdem záchod ?',
+        translated: 'Where can I find a toilet ?',
+        liked: false,
+    },
+    {
+        id: 10, 
+        native: 'Môžem zaplatiť ?',
+        translated: 'Can I pay ?',
+        liked: false,
+    },
 ]
 
 export const words = [
