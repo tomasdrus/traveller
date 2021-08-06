@@ -1,33 +1,54 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    Image,
+    Dimensions,
+} from 'react-native'
 
-import Heading from '../components/Heading';
+import Heading from '../components/Heading'
 
-import colors from '../config/colors';
-import { categories } from '../data/categories';
+import colors from '../config/colors'
+import { categories } from '../data/categories'
 
-categories.sort((a, b) => a.order - b.order);
+categories.sort((a, b) => a.order - b.order)
 
 const opacity = (number) => {
-    if(number <= 0) return '00'
-    if(number >= 100) return 'FF'
+    if (number <= 0) return '00'
+    if (number >= 100) return 'FF'
     return Number(Math.round(number * 2.55)).toString(16)
 }
 
-export default function CategoriesScreen({route, navigation}) {
+const windowWidth = Dimensions.get('window').width
+const windowHeight = Dimensions.get('window').height
+
+export default function CategoriesScreen({ route, navigation }) {
     return (
         <View style={styles.container}>
-            <Heading text={`Select your category (${route.params.code})`} navigation={navigation} />
+            <Heading
+                text={`Select your category (${route.params.code})`}
+                navigation={navigation}
+            />
 
             <View style={styles.categoryWrapper}>
                 {categories.map((item, index) => (
                     <TouchableOpacity
                         key={index}
                         style={styles.category}
-                        onPress={() => navigation.navigate('Detail', {category: item.name})}>
+                        onPress={() =>
+                            navigation.navigate('Detail', {
+                                category: item.name,
+                            })
+                        }
+                    >
                         <View style={styles.imageWrapper}>
-                            <Image source={{uri: item.image}} style={styles.image} />
+                            <Image
+                                source={{ uri: item.image }}
+                                style={styles.image}
+                            />
                         </View>
                         <Text style={styles.name}>{item.name}</Text>
                     </TouchableOpacity>
@@ -35,7 +56,7 @@ export default function CategoriesScreen({route, navigation}) {
             </View>
 
             <StatusBar style="auto" />
-        </View >
+        </View>
     )
 }
 
@@ -48,8 +69,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     category: {
-        width: '30%',
-        height: 105,
+        width: (windowWidth - 20 - 30) / 3,
+        height: (windowHeight - 180 - 10) / 6,
         margin: 5,
         borderRadius: 5,
         backgroundColor: colors.white,
@@ -64,7 +85,7 @@ const styles = StyleSheet.create({
     imageWrapper: {
         width: 50,
         height: 50,
-        borderRadius: 50/2,
+        borderRadius: 50 / 2,
         backgroundColor: '#15CAF2' + opacity(15),
         padding: 11,
     },
@@ -72,5 +93,5 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         tintColor: '#15CAF2',
-    }
-});
+    },
+})
