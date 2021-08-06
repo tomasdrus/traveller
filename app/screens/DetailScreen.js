@@ -1,11 +1,5 @@
 import React, { useState } from 'react'
-import {
-    StyleSheet,
-    Text,
-    View,
-    FlatList,
-    TouchableOpacity,
-} from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableWithoutFeedback } from 'react-native'
 
 import { AntDesign } from '@expo/vector-icons'
 
@@ -21,12 +15,8 @@ const mergeLanguages = (nativeLanguage, translatedLanguage, favorites) => {
 
     types.forEach((type) => {
         result[type] = nativeLanguage[type].map((nativeItem) => {
-            const translated = translatedLanguage[type].find(
-                (translatedItem) => translatedItem.id === nativeItem.id,
-            )
-            const favorite = favorites[type].find(
-                (favoriteItem) => favoriteItem.id === nativeItem.id,
-            )
+            const translated = translatedLanguage[type].find((translatedItem) => translatedItem.id === nativeItem.id)
+            const favorite = favorites[type].find((favoriteItem) => favoriteItem.id === nativeItem.id)
             return {
                 ...nativeItem,
                 translated: translated.native,
@@ -53,9 +43,7 @@ export default function CategoriesScreen({ route, navigation }) {
     const showHandler = (type) => {
         let showCopy = { ...show, [type]: !show[type] }
         if (!showCopy.phrases && !showCopy.words)
-            type === 'phrases'
-                ? (showCopy.words = true)
-                : (showCopy.phrases = true)
+            type === 'phrases' ? (showCopy.words = true) : (showCopy.phrases = true)
 
         setShow(showCopy)
     }
@@ -73,19 +61,12 @@ export default function CategoriesScreen({ route, navigation }) {
 
             <View style={styles.sectionWrapper}>
                 <Text style={styles.sectionHeading}>Phrases list</Text>
-                <TouchableOpacity
-                    style={styles.sectionShow}
-                    onPress={() => showHandler('phrases')}
-                >
-                    <Text style={styles.sectionShowText}>
-                        {show.phrases ? 'Hide' : 'Open'}
-                    </Text>
-                    <AntDesign
-                        name={show.phrases ? 'down' : 'up'}
-                        size={20}
-                        color={colors.primary}
-                    />
-                </TouchableOpacity>
+                <TouchableWithoutFeedback onPress={() => showHandler('phrases')}>
+                    <View style={styles.sectionShow}>
+                        <Text style={styles.sectionShowText}>{show.phrases ? 'Hide' : 'Open'}</Text>
+                        <AntDesign name={show.phrases ? 'down' : 'up'} size={20} color={colors.primary} />
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
             {show.phrases && (
                 <FlatList
@@ -94,22 +75,13 @@ export default function CategoriesScreen({ route, navigation }) {
                         return (
                             <View style={styles.item}>
                                 <View>
-                                    <Text style={styles.itemNative}>
-                                        {item.native}
-                                    </Text>
-                                    <Text style={styles.itemTranslated}>
-                                        {item.translated}
-                                    </Text>
+                                    <Text style={styles.itemNative}>{item.native}</Text>
+                                    <Text style={styles.itemTranslated}>{item.translated}</Text>
                                 </View>
 
-                                <AntDesign
-                                    name={item.favorite ? 'heart' : 'hearto'}
-                                    size={22}
-                                    color="red"
-                                    onPress={() =>
-                                        favoriteHandler(item.id, 'phrases')
-                                    }
-                                />
+                                <TouchableWithoutFeedback onPress={() => favoriteHandler(item.id, 'phrases')}>
+                                    <AntDesign name={item.favorite ? 'heart' : 'hearto'} size={22} color="red" />
+                                </TouchableWithoutFeedback>
                             </View>
                         )
                     }}
@@ -121,19 +93,12 @@ export default function CategoriesScreen({ route, navigation }) {
 
             <View style={[styles.sectionWrapper, { marginTop: 10 }]}>
                 <Text style={styles.sectionHeading}>Words list</Text>
-                <TouchableOpacity
-                    style={styles.sectionShow}
-                    onPress={() => showHandler('words')}
-                >
-                    <Text style={styles.sectionShowText}>
-                        {show.words ? 'Hide' : 'Open'}
-                    </Text>
-                    <AntDesign
-                        name={show.words ? 'down' : 'up'}
-                        size={20}
-                        color={colors.primary}
-                    />
-                </TouchableOpacity>
+                <TouchableWithoutFeedback onPress={() => showHandler('words')}>
+                    <View style={styles.sectionShow}>
+                        <Text style={styles.sectionShowText}>{show.words ? 'Hide' : 'Open'}</Text>
+                        <AntDesign name={show.words ? 'down' : 'up'} size={20} color={colors.primary} />
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
             {show.words && (
                 <FlatList
@@ -142,26 +107,15 @@ export default function CategoriesScreen({ route, navigation }) {
                         return (
                             <View style={styles.item}>
                                 <View style={styles.itemWords}>
-                                    <Text
-                                        style={[
-                                            styles.itemNative,
-                                            styles.itemNativeWords,
-                                        ]}
-                                    >
-                                        {item.native}
-                                    </Text>
-                                    <Text style={styles.itemTranslated}>
-                                        {item.translated}
-                                    </Text>
+                                    <Text style={[styles.itemNative, styles.itemNativeWords]}>{item.native}</Text>
+                                    <Text style={styles.itemTranslated}>{item.translated}</Text>
                                 </View>
 
                                 <AntDesign
                                     name={item.favorite ? 'heart' : 'hearto'}
                                     size={22}
                                     color="red"
-                                    onPress={() =>
-                                        favoriteHandler(item.id, 'words')
-                                    }
+                                    onPress={() => favoriteHandler(item.id, 'words')}
                                 />
                             </View>
                         )
