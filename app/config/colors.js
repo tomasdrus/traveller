@@ -1,4 +1,4 @@
-export default {
+export const colors = {
     white: '#FFFFFF',
     black: '#141930',
 
@@ -15,4 +15,10 @@ export default {
     purple: '#522ED2',
     yellow: '#FFBF35',
     green: '#01BCAD',
+}
+
+export const opacity = (number) => {
+    if (number <= 0) return '00'
+    if (number >= 100) return 'FF'
+    return Number(Math.round(number * 2.55)).toString(16)
 }

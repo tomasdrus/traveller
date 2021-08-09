@@ -4,16 +4,10 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'rea
 
 import Heading from '../components/Heading'
 
-import colors from '../config/colors'
+import { colors, opacity } from '../config/colors'
 import { categories } from '../data/categories'
 
 categories.sort((a, b) => a.order - b.order)
-
-const opacity = (number) => {
-    if (number <= 0) return '00'
-    if (number >= 100) return 'FF'
-    return Number(Math.round(number * 2.55)).toString(16)
-}
 
 const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
@@ -26,8 +20,10 @@ export default function CategoriesScreen({ route, navigation }) {
             <View style={styles.categoryWrapper}>
                 {categories.map((item, index) => (
                     <TouchableOpacity
-                        key={index}
                         style={styles.category}
+                        pressDuration={0.2}
+                        activeOpacity={0.3}
+                        key={index}
                         onPress={() =>
                             navigation.navigate('Detail', {
                                 category: item.name,

@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, FlatList, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Pressable, TouchableOpacity } from 'react-native'
 
 import { AntDesign } from '@expo/vector-icons'
 
 import Heading from '../components/Heading'
+import ModalDetail from '../components/ModalDetail'
 
-import colors from '../config/colors'
+import { colors } from '../config/colors'
 import { slovak, english } from '../data/translations'
 import { translations } from '../data/favorites'
 
@@ -55,35 +56,61 @@ export default function CategoriesScreen({ route, navigation }) {
         type === 'phrases' ? setPhrases(arrayCopy) : setWords(arrayCopy)
     }
 
+    // Modal
+    const [modalVisible, setModalVisible] = useState(false)
+    const [modalItem, setmodalItem] = useState({})
+
+    const openModal = (item) => {
+        setModalVisible(true)
+        setmodalItem(item)
+    }
+
+    const HeaderList = ({ type }) => {
+        return (
+            <View style={styles.sectionWrapper}>
+                <Text style={[styles.sectionHeading, type === 'words' ? { marginTop: 10 } : {}]}>{type} list</Text>
+                <Pressable style={styles.sectionShow} hitSlop={10} onPress={() => showHandler(type)}>
+                    <Text style={styles.sectionShowText}>{show[type] ? 'Hide' : 'Open'}</Text>
+                    <AntDesign name={show[type] ? 'down' : 'up'} size={20} color={colors.primary} />
+                </Pressable>
+            </View>
+        )
+    }
+
+    const FlatListItem = ({ type, item }) => {
+        return (
+            <TouchableOpacity
+                style={styles.item}
+                pressDuration={0.1}
+                activeOpacity={0.3}
+                onPress={() => openModal(item)}
+            >
+                <View style={type === 'words' ? styles.itemWords : {}}>
+                    <Text style={[styles.itemNative, type === 'words' ? styles.itemNativeWords : {}]}>
+                        {item.native}
+                    </Text>
+                    <Text style={styles.itemTranslated}>{item.translated}</Text>
+                </View>
+
+                <Pressable hitSlop={15} onPress={() => favoriteHandler(item.id, type)}>
+                    <AntDesign name={item.favorite ? 'heart' : 'hearto'} size={22} color="red" />
+                </Pressable>
+            </TouchableOpacity>
+        )
+    }
+
     return (
         <View style={styles.container}>
+            <ModalDetail visible={modalVisible} setVisible={setModalVisible} item={modalItem} />
+
             <Heading text={`${route.params.category} (${route.params.code})`} navigation={navigation} />
 
-            <View style={styles.sectionWrapper}>
-                <Text style={styles.sectionHeading}>Phrases list</Text>
-                <TouchableWithoutFeedback onPress={() => showHandler('phrases')}>
-                    <View style={styles.sectionShow}>
-                        <Text style={styles.sectionShowText}>{show.phrases ? 'Hide' : 'Open'}</Text>
-                        <AntDesign name={show.phrases ? 'down' : 'up'} size={20} color={colors.primary} />
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+            <HeaderList type="phrases" />
             {show.phrases && (
                 <FlatList
                     data={phrases}
                     renderItem={({ item }) => {
-                        return (
-                            <View style={styles.item}>
-                                <View>
-                                    <Text style={styles.itemNative}>{item.native}</Text>
-                                    <Text style={styles.itemTranslated}>{item.translated}</Text>
-                                </View>
-
-                                <TouchableWithoutFeedback onPress={() => favoriteHandler(item.id, 'phrases')}>
-                                    <AntDesign name={item.favorite ? 'heart' : 'hearto'} size={22} color="red" />
-                                </TouchableWithoutFeedback>
-                            </View>
-                        )
+                        return <FlatListItem type="phrases" item={item} />
                     }}
                     keyExtractor={(item) => item.native}
                     showsVerticalScrollIndicator={false}
@@ -91,34 +118,12 @@ export default function CategoriesScreen({ route, navigation }) {
                 />
             )}
 
-            <View style={[styles.sectionWrapper, { marginTop: 10 }]}>
-                <Text style={styles.sectionHeading}>Words list</Text>
-                <TouchableWithoutFeedback onPress={() => showHandler('words')}>
-                    <View style={styles.sectionShow}>
-                        <Text style={styles.sectionShowText}>{show.words ? 'Hide' : 'Open'}</Text>
-                        <AntDesign name={show.words ? 'down' : 'up'} size={20} color={colors.primary} />
-                    </View>
-                </TouchableWithoutFeedback>
-            </View>
+            <HeaderList type="words" />
             {show.words && (
                 <FlatList
                     data={words}
                     renderItem={({ item }) => {
-                        return (
-                            <View style={styles.item}>
-                                <View style={styles.itemWords}>
-                                    <Text style={[styles.itemNative, styles.itemNativeWords]}>{item.native}</Text>
-                                    <Text style={styles.itemTranslated}>{item.translated}</Text>
-                                </View>
-
-                                <AntDesign
-                                    name={item.favorite ? 'heart' : 'hearto'}
-                                    size={22}
-                                    color="red"
-                                    onPress={() => favoriteHandler(item.id, 'words')}
-                                />
-                            </View>
-                        )
+                        return <FlatListItem type="words" item={item} />
                     }}
                     keyExtractor={(item) => item.translated}
                     showsVerticalScrollIndicator={false}
@@ -174,6 +179,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 18,
         color: colors.black,
+        textTransform: 'capitalize',
     },
     sectionShow: {
         flexDirection: 'row',
