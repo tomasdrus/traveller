@@ -1,13 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'; 
+import { StyleSheet, Text, View, Button, Pressable } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
 const Heading = ({ text, navigation, back = true }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{text}</Text>
-            {back &&
-            <Ionicons name="arrow-back" size={26} color="#15CAF2" style={styles.back} onPress={() => navigation.goBack()} />}
+            {back && (
+                <Pressable hitSlop={15} onPress={() => navigation.goBack()}>
+                    <Ionicons name="arrow-back" size={26} color="#15CAF2" style={styles.back} />
+                </Pressable>
+            )}
         </View>
     )
 }
@@ -28,5 +31,5 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 10,
         bottom: -2,
-    }
+    },
 })

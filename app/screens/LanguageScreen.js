@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native'
 
-import colors from '../config/colors'
+import { colors } from '../config/colors'
 import Heading from '../components/Heading'
 
 import Heart from '../assets/icons/Heart'

@@ -1,5 +1,4 @@
 import React from 'react'
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions } from 'react-native'
 
 import Heading from '../components/Heading'
@@ -32,14 +31,12 @@ export default function CategoriesScreen({ route, navigation }) {
                         }
                     >
                         <View style={styles.imageWrapper}>
-                            <Image source={{ uri: item.image }} style={styles.image} />
+                            <Image source={item.uri} style={styles.image} />
                         </View>
                         <Text style={styles.name}>{item.name}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
-
-            <StatusBar style="auto" />
         </View>
     )
 }
@@ -53,8 +50,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     category: {
-        width: (windowWidth - 20 - 31) / 3,
-        height: (windowHeight - 180 - 10) / 6,
+        width: Math.floor((windowWidth - 20 - 30) / 3),
+        height: Math.floor((windowHeight - 180 - 10) / 6),
         margin: 5,
         borderRadius: 5,
         backgroundColor: colors.white,
