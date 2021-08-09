@@ -14,6 +14,7 @@ const mergeLanguages = (nativeLanguage, translatedLanguage, favorites) => {
     const result = {}
 
     types.forEach((type) => {
+        //TODO merge order from file
         result[type] = nativeLanguage[type].map((nativeItem) => {
             const translated = translatedLanguage[type].find((translatedItem) => translatedItem.id === nativeItem.id)
             const favorite = favorites[type].find((favoriteItem) => favoriteItem.id === nativeItem.id)
@@ -28,10 +29,9 @@ const mergeLanguages = (nativeLanguage, translatedLanguage, favorites) => {
     return result
 }
 
-/* const reformat = wordsList.map((word) => {
-    const favorite = translations.words.find((item) => item.id === word.id)
-    return { ...word, favorite: favorite.liked }
-}) */
+const changeOrder = () => {
+    //TODO complete function for changing order on liking
+}
 
 const mergedLanguages = mergeLanguages(slovak, english, translations)
 
@@ -57,7 +57,7 @@ export default function CategoriesScreen({ route, navigation }) {
 
     return (
         <View style={styles.container}>
-            <Heading text={route.params.category} navigation={navigation} />
+            <Heading text={`${route.params.category} (${route.params.code})`} navigation={navigation} />
 
             <View style={styles.sectionWrapper}>
                 <Text style={styles.sectionHeading}>Phrases list</Text>

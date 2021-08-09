@@ -1,84 +1,60 @@
-import React from 'react'
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'react-native'
 
-import colors from '../config/colors';
-import Heading from '../components/Heading';
+import colors from '../config/colors'
+import Heading from '../components/Heading'
 
-import Heart from '../assets/icons/Heart';
-import Download from '../assets/icons/Download';
+import Heart from '../assets/icons/Heart'
+import Download from '../assets/icons/Download'
 
-const languages = [
-    {
-        code: 'es',
-        name: 'Spanish',
-        native: 'Español'
-    },
-    {
-        code: 'sk',
-        name: 'Slovak',
-        native: 'Slovenčina'
-    },
-    {
-        code: 'ru',
-        name: 'Russian',
-        native: 'русский'
-    },
-    {
-        code: 'it',
-        name: 'Italian',
-        native: 'Italiano'
-    },
-]
+import { languagesList } from '../data/languages'
 
-
-
-export default function LanguageScreen({navigation}) {
-    const [text, onChangeText] = React.useState('');
+export default function LanguageScreen({ navigation }) {
+    const [text, onChangeText] = useState('')
+    const [languages, setlanguages] = useState(languagesList)
 
     const Item = ({ item }) => (
-        <TouchableOpacity style={language.item} onPress={() => navigation.navigate('Categories', {code: item.code})}>
+        <TouchableOpacity style={language.item} onPress={() => navigation.navigate('Categories', { code: item.code })}>
             <Text style={language.code}>{item.code}</Text>
-            <Text style={language.name}>{item.name} ({item.native})</Text>
+            <Text style={language.name}>
+                {item.name} ({item.native})
+            </Text>
 
             <View style={language.icons}>
                 <Heart size={20} color={'red'} />
                 <Download size={20} color={colors.primary} />
             </View>
         </TouchableOpacity>
-    );
+    )
 
     return (
         <View style={styles.container}>
-            <Heading text={'Select translated language'} navigation={navigation} back={false}/>
+            <Heading text={'Select translated language'} navigation={navigation} back={false} />
 
             <Text style={styles.subHeading}>Language by your location </Text>
-            <Item item={{
-                code: 'it',
-                name: 'Italian',
-                native: 'Italiano'
-            }}></Item>
+            <Item
+                item={{
+                    code: 'it',
+                    name: 'Italian',
+                    native: 'Italiano',
+                }}
+            ></Item>
 
-            <Text style={styles.subHeading, { marginTop: 10 }}>Search for language </Text>
-            <TextInput
-                value={text}
-                onChangeText={onChangeText}
-                placeholder='search'
-                style={styles.input}
-            />
+            <Text style={(styles.subHeading, { marginTop: 10 })}>Search for language </Text>
+            <TextInput value={text} onChangeText={onChangeText} placeholder="search" style={styles.input} />
 
             <FlatList
                 data={languages}
                 renderItem={Item}
-                keyExtractor={item => item.code}
+                keyExtractor={(item) => item.code}
                 showsVerticalScrollIndicator={false}
             />
 
             <StatusBar style="auto" />
-        </View >
+        </View>
     )
 }
-
 
 const language = StyleSheet.create({
     item: {
@@ -106,11 +82,8 @@ const language = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: 50,
-    }
+    },
 })
-
-
-
 
 const styles = StyleSheet.create({
     container: {
@@ -130,5 +103,5 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 15,
         marginBottom: 3,
-    }
-});
+    },
+})
