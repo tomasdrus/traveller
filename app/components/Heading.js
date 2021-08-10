@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Button, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
 const Heading = ({ text, navigation, back = true }) => {
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 55,
         marginBottom: 20,
+        backgroundColor: 'white',
     },
     text: {
         textAlign: 'center',
