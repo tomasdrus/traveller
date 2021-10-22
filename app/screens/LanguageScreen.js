@@ -43,7 +43,13 @@ export default function LanguageScreen({ navigation }) {
                 ></Item>
 
                 <Text style={[styles.subHeading, { marginTop: 5 }]}>Search for language </Text>
-                <TextInput value={text} onChangeText={onChangeText} placeholder="search" style={styles.input} />
+                <TextInput
+                    value={text}
+                    onChangeText={onChangeText}
+                    placeholder="search..."
+                    placeholderTextColor={colors.gray700}
+                    style={styles.input}
+                />
 
                 <FlatList
                     data={languages}

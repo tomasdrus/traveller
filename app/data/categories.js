@@ -1,20 +1,21 @@
+// SVG to PNG converter https://www.freeconvert.com/png-to-svg/download
 export const categories = [
     {
         name: 'General',
         order: 1,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/comments.png'),
         color: '#2563EB',
     },
     {
         name: 'Directions',
         order: 2,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/route.png'),
         color: '#2563EB',
     },
     {
-        name: 'Social',
+        name: 'Units & Time',
         order: 3,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/abacus.png'),
         color: '#2563EB',
     },
     {
@@ -38,7 +39,7 @@ export const categories = [
     {
         name: 'Sightseeing',
         order: 7,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/archway.png'),
         color: '#16A34A',
     },
     {
@@ -56,19 +57,19 @@ export const categories = [
     {
         name: 'Places',
         order: 10,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/globe-stand.png'),
         color: '#DB2777',
     },
     {
-        name: 'Community',
+        name: 'Household',
         order: 11,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/couch.png'),
         color: '#DB2777',
     },
     {
-        name: 'Romance',
+        name: 'Relationships',
         order: 12,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/users.png'),
         color: '#DB2777',
     },
     {
@@ -92,7 +93,7 @@ export const categories = [
     {
         name: 'Healthcare',
         order: 16,
-        uri: require('../assets/images/categories/png/car-bus.png'),
+        uri: require('../assets/images/categories/png/stethoscope.png'),
         color: '#DC2626',
     },
     {
