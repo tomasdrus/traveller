@@ -7,25 +7,25 @@ import CategoriesScreen from './app/screens/CategoriesScreen'
 import LanguageScreen from './app/screens/LanguageScreen'
 import DetailScreen from './app/screens/DetailScreen'
 
-//const Stack = createStackNavigator()
-const Tab = createBottomTabNavigator()
+const Stack = createStackNavigator()
+//const Tab = createBottomTabNavigator()
 
 export default function App() {
     return (
-        /* <NavigationContainer>
-      <Stack.Navigator screenOptions={{header: () => null}}>
-        <Stack.Screen name='Language' component={LanguageScreen} />
-        <Stack.Screen name='Categories' component={CategoriesScreen} />
-        <Stack.Screen name='Detail' component={DetailScreen} />
-      </Stack.Navigator>
-    </NavigationContainer> */
-
         <NavigationContainer>
+            <Stack.Navigator screenOptions={{ header: () => null }}>
+                <Stack.Screen name="Language" component={LanguageScreen} />
+                <Stack.Screen name="Categories" component={CategoriesScreen} />
+                <Stack.Screen name="Detail" component={DetailScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+
+        /* <NavigationContainer>
             <Tab.Navigator>
                 <Tab.Screen name="Language" component={LanguageScreen} />
                 <Tab.Screen name="Categories" component={CategoriesScreen} />
                 <Tab.Screen name="Detail" component={DetailScreen} />
             </Tab.Navigator>
-        </NavigationContainer>
+        </NavigationContainer> */
     )
 }

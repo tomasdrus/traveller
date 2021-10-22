@@ -2,7 +2,7 @@ export const colors = {
     white: '#FFFFFF',
     black: '#141930',
 
-    primary: '#15CAF2',
+    primary: '#2563EB',
 
     gray700: '#6E7191',
     gray500: '#8A8D9F',
@@ -15,6 +15,7 @@ export const colors = {
     purple: '#522ED2',
     yellow: '#FFBF35',
     green: '#01BCAD',
+    red: '#DC2626',
 }
 
 export const opacity = (number) => {

@@ -13,37 +13,39 @@ const windowHeight = Dimensions.get('window').height
 
 export default function CategoriesScreen({ route, navigation }) {
     return (
-        <View style={styles.container}>
-            <Heading text={`Categories (${route.params.code})`} navigation={navigation} />
-
-            <View style={styles.categoryWrapper}>
-                {categories.map((item, index) => (
-                    <TouchableOpacity
-                        style={styles.category}
-                        pressDuration={0.2}
-                        activeOpacity={0.3}
-                        key={index}
-                        onPress={() =>
-                            navigation.navigate('Detail', {
-                                category: item.name,
-                                code: route.params.code,
-                            })
-                        }
-                    >
-                        <View style={styles.imageWrapper}>
-                            <Image source={item.uri} style={styles.image} />
-                        </View>
-                        <Text style={styles.name}>{item.name}</Text>
-                    </TouchableOpacity>
-                ))}
+        <>
+            <Heading text={'Categories'} language={route.params.code} navigation={navigation} />
+            <View style={styles.container}>
+                <View style={styles.categoryWrapper}>
+                    {categories.map((item, index) => (
+                        <TouchableOpacity
+                            style={styles.category}
+                            pressDuration={0.2}
+                            activeOpacity={0.3}
+                            key={index}
+                            onPress={() =>
+                                navigation.navigate('Detail', {
+                                    category: item.name,
+                                    code: route.params.code,
+                                })
+                            }
+                        >
+                            <View style={[styles.imageWrapper, { backgroundColor: item.color + opacity(10) }]}>
+                                <Image source={item.uri} style={[styles.image, { tintColor: item.color }]} />
+                            </View>
+                            <Text style={styles.name}>{item.name}</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
             </View>
-        </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         marginHorizontal: 10,
+        marginTop: -5,
     },
     categoryWrapper: {
         flexDirection: 'row',
@@ -64,15 +66,13 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     imageWrapper: {
-        width: 50,
-        height: 50,
-        borderRadius: 50 / 2,
-        backgroundColor: '#15CAF2' + opacity(15),
-        padding: 11,
+        width: 55,
+        height: 55,
+        borderRadius: 55 / 2,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     image: {
-        width: '100%',
-        height: '100%',
-        tintColor: '#15CAF2',
+        transform: [{ scale: 0.37 }],
     },
 })

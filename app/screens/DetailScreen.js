@@ -67,8 +67,8 @@ export default function CategoriesScreen({ route, navigation }) {
 
     const HeaderList = ({ type }) => {
         return (
-            <View style={styles.sectionWrapper}>
-                <Text style={[styles.sectionHeading, type === 'words' ? { marginTop: 10 } : {}]}>{type} list</Text>
+            <View style={[styles.sectionWrapper, type === 'words' ? { marginTop: 10 } : {}]}>
+                <Text style={styles.sectionHeading}>{type} list</Text>
                 <Pressable style={styles.sectionShow} hitSlop={10} onPress={() => showHandler(type)}>
                     <Text style={styles.sectionShowText}>{show[type] ? 'Hide' : 'Open'}</Text>
                     <AntDesign name={show[type] ? 'down' : 'up'} size={20} color={colors.primary} />
@@ -100,43 +100,44 @@ export default function CategoriesScreen({ route, navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <ModalDetail visible={modalVisible} setVisible={setModalVisible} item={modalItem} />
+        <>
+            <Heading text={route.params.category} language={route.params.code} navigation={navigation} />
+            <View style={styles.container}>
+                <ModalDetail visible={modalVisible} setVisible={setModalVisible} item={modalItem} />
 
-            <Heading text={`${route.params.category} (${route.params.code})`} navigation={navigation} />
+                <HeaderList type="phrases" />
+                {show.phrases && (
+                    <FlatList
+                        data={phrases}
+                        renderItem={({ item }) => {
+                            return <FlatListItem type="phrases" item={item} />
+                        }}
+                        keyExtractor={(item) => item.native}
+                        showsVerticalScrollIndicator={false}
+                        style={styles.sectionList}
+                    />
+                )}
 
-            <HeaderList type="phrases" />
-            {show.phrases && (
-                <FlatList
-                    data={phrases}
-                    renderItem={({ item }) => {
-                        return <FlatListItem type="phrases" item={item} />
-                    }}
-                    keyExtractor={(item) => item.native}
-                    showsVerticalScrollIndicator={false}
-                    style={styles.sectionList}
-                />
-            )}
-
-            <HeaderList type="words" />
-            {show.words && (
-                <FlatList
-                    data={words}
-                    renderItem={({ item }) => {
-                        return <FlatListItem type="words" item={item} />
-                    }}
-                    keyExtractor={(item) => item.translated}
-                    showsVerticalScrollIndicator={false}
-                    style={styles.sectionList}
-                />
-            )}
-        </View>
+                <HeaderList type="words" />
+                {show.words && (
+                    <FlatList
+                        data={words}
+                        renderItem={({ item }) => {
+                            return <FlatListItem type="words" item={item} />
+                        }}
+                        keyExtractor={(item) => item.translated}
+                        showsVerticalScrollIndicator={false}
+                        style={styles.sectionList}
+                    />
+                )}
+            </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 10,
+        marginHorizontal: 15,
         flex: 1,
         marginBottom: 30,
     },
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     },
     sectionHeading: {
         fontWeight: '600',
-        fontSize: 18,
+        fontSize: 16,
         color: colors.black,
         textTransform: 'capitalize',
     },
