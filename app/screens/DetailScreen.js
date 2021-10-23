@@ -7,7 +7,7 @@ import Heading from '../components/Heading'
 import ModalDetail from '../components/ModalDetail'
 
 import { colors } from '../config/colors'
-import { slovak, english } from '../data/translations'
+import { english, french } from '../data/translations'
 import { translations } from '../data/favorites'
 
 const mergeLanguages = (nativeLanguage, translatedLanguage, favorites) => {
@@ -34,7 +34,7 @@ const changeOrder = () => {
     //TODO complete function for changing order on liking
 }
 
-const mergedLanguages = mergeLanguages(slovak, english, translations)
+const mergedLanguages = mergeLanguages(english, french, translations)
 
 export default function CategoriesScreen({ route, navigation }) {
     const [show, setShow] = useState({ phrases: true, words: true })

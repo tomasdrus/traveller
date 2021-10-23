@@ -70,5 +70,37 @@ export const translations = {
             id: 7,
             liked: true,
         },
+        {
+            id: 8,
+            liked: false,
+        },
+        {
+            id: 9,
+            liked: false,
+        },
+        {
+            id: 10,
+            liked: false,
+        },
+        {
+            id: 11,
+            liked: false,
+        },
+        {
+            id: 12,
+            liked: false,
+        },
+        {
+            id: 13,
+            liked: false,
+        },
+        {
+            id: 14,
+            liked: false,
+        },
+        {
+            id: 15,
+            liked: false,
+        },
     ],
 }
