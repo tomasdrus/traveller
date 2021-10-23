@@ -5,8 +5,7 @@ import { StyleSheet, Text, View, FlatList, TextInput, TouchableOpacity } from 'r
 import { colors } from '../config/colors'
 import Heading from '../components/Heading'
 
-import Heart from '../assets/icons/Heart'
-import Download from '../assets/icons/Download'
+import { AntDesign } from '@expo/vector-icons'
 
 import { languagesList } from '../data/languages'
 
@@ -22,8 +21,8 @@ export default function LanguageScreen({ navigation }) {
             </Text>
 
             <View style={language.icons}>
-                <Heart size={20} color={colors.red} />
-                <Download size={20} color={colors.primary} />
+                <AntDesign name="download" size={22} color={colors.primary} />
+                <AntDesign name={item.code === 'es' || item.code === 'ru' ? 'heart' : 'hearto'} size={22} color="red" />
             </View>
         </TouchableOpacity>
     )
@@ -92,7 +91,7 @@ const language = StyleSheet.create({
         marginLeft: 'auto',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: 50,
+        width: 55,
     },
 })
 

@@ -73,6 +73,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     image: {
-        transform: [{ scale: 0.37 }],
+        transform: [{ scale: 0.36 }],
     },
 })

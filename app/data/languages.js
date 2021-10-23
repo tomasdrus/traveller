@@ -50,6 +50,46 @@ export const languagesList = [
         name: 'Czech',
         native: 'Čeština',
     },
+    {
+        code: 'bg',
+        name: 'Bulgarian',
+        native: 'Български',
+    },
+    {
+        code: 'da',
+        name: 'Danish',
+        native: 'Dansk',
+    },
+    {
+        code: 'sl',
+        name: 'Slovenian',
+        native: 'Slovenščina',
+    },
+    {
+        code: 'el',
+        name: 'Greek',
+        native: 'Ελληνικά',
+    },
+    {
+        code: 'fi',
+        name: 'Finnish',
+        native: 'Suomi',
+    },
+    {
+        code: 'hr',
+        name: 'Croatian',
+        native: 'Hrvatski',
+    },
+    {
+        code: 'hi',
+        name: 'Hindi',
+        native: 'हिन्दी',
+    },
+    {
+        code: 'ko',
+        name: 'Korean',
+        native: '한국어',
+    },
     /* {
         code: 'man',
         name: 'Mandarin',
