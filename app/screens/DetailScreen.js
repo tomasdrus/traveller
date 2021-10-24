@@ -93,7 +93,7 @@ export default function CategoriesScreen({ route, navigation }) {
                 </View>
 
                 <Pressable hitSlop={15} onPress={() => favoriteHandler(item.id, type)}>
-                    <AntDesign name={item.favorite ? 'heart' : 'hearto'} size={22} color="red" />
+                    <AntDesign name={item.favorite ? 'heart' : 'hearto'} size={21} color="red" />
                 </Pressable>
             </TouchableOpacity>
         )
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     },
     sectionHeading: {
         fontWeight: '600',
-        fontSize: 16,
+        fontSize: 15,
         color: colors.black,
         textTransform: 'capitalize',
     },

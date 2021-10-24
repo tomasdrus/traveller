@@ -2,43 +2,43 @@ export const french = {
     phrases: [
         {
             id: 1,
-            native: 'Nfs',
+            native: 'Savez-vous où se trouve le ... ?',
         },
         {
             id: 2,
-            native: 'Thank you very much.',
+            native: "Pouvez-vous m'aider avec les directions?",
         },
         {
             id: 3,
-            native: 'I am sorry',
+            native: 'Est-ce le bon chemin vers le ... ?',
         },
         {
             id: 4,
-            native: 'I do not understand',
+            native: 'Savez-vous où se trouve le plus proche?',
         },
         {
             id: 5,
-            native: 'Mohli by ste to zopakovať, prosím?',
+            native: 'Pouvez-vous me le montrer sur la carte?',
         },
         {
             id: 6,
-            native: 'Mohli by ste prosím hovoriť pomalšie?',
+            native: 'Comment est-ce que je me rends ... ?',
         },
         {
             id: 7,
-            native: 'Thank you. That helps a lot.',
+            native: "Quelle est la meilleure façon d'arriver à ...?",
         },
         {
             id: 8,
-            native: 'What does _____ mean?',
+            native: "À quelle distance est-il de... d'ici ?",
         },
         {
             id: 9,
-            native: 'Where can I find a toilet ?',
+            native: 'Où suis-je exactement ?',
         },
         {
             id: 10,
-            native: 'Can I pay ?',
+            native: 'Merci. Cela aide beaucoup.',
         },
     ],
     words: [
@@ -184,43 +184,43 @@ export const english = {
     phrases: [
         {
             id: 1,
-            native: 'Nice to meet you.',
+            native: 'Do you know where the ... is?',
         },
         {
             id: 2,
-            native: 'Thank you very much.',
+            native: 'Can you help me with directions?',
         },
         {
             id: 3,
-            native: 'I am sorry',
+            native: 'Is this the right way to the ... ?',
         },
         {
             id: 4,
-            native: 'I do not understand',
+            native: 'Do you know where the nearest ... is?',
         },
         {
             id: 5,
-            native: 'Mohli by ste to zopakovať, prosím?',
+            native: 'Can you show me on the map?',
         },
         {
             id: 6,
-            native: 'Mohli by ste prosím hovoriť pomalšie?',
+            native: 'How do I get to ... ?',
         },
         {
             id: 7,
-            native: 'Thank you. That helps a lot.',
+            native: 'What’s the best way to get to ... ?',
         },
         {
             id: 8,
-            native: 'What does _____ mean?',
+            native: 'How far is it to ... from here?',
         },
         {
             id: 9,
-            native: 'Where can I find a toilet ?',
+            native: 'Where exactly am I?',
         },
         {
             id: 10,
-            native: 'Can I pay ?',
+            native: 'Thank you. That helps a lot.',
         },
     ],
     words: [

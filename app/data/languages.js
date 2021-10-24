@@ -1,5 +1,10 @@
 export const languagesList = [
     {
+        code: 'fr',
+        name: 'French',
+        native: 'Français',
+    },
+    {
         code: 'es',
         name: 'Spanish',
         native: 'Español',
@@ -38,12 +43,6 @@ export const languagesList = [
         code: 'de',
         name: 'German',
         native: 'Deutsch',
-    },
-
-    {
-        code: 'sk',
-        name: 'Slovak',
-        native: 'Slovenčina',
     },
     {
         code: 'cz',

@@ -2,7 +2,7 @@ export const translations = {
     phrases: [
         {
             id: 1,
-            liked: false,
+            liked: true,
         },
         {
             id: 2,
@@ -44,15 +44,15 @@ export const translations = {
     words: [
         {
             id: 1,
-            liked: false,
+            liked: true,
         },
         {
             id: 2,
-            liked: false,
+            liked: true,
         },
         {
             id: 3,
-            liked: false,
+            liked: true,
         },
         {
             id: 4,
@@ -64,11 +64,11 @@ export const translations = {
         },
         {
             id: 6,
-            liked: true,
+            liked: false,
         },
         {
             id: 7,
-            liked: true,
+            liked: false,
         },
         {
             id: 8,

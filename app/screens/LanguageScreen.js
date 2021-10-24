@@ -21,8 +21,8 @@ export default function LanguageScreen({ navigation }) {
             </Text>
 
             <View style={language.icons}>
-                <AntDesign name="download" size={22} color={colors.primary} />
-                <AntDesign name={item.code === 'es' || item.code === 'ru' ? 'heart' : 'hearto'} size={22} color="red" />
+                <AntDesign name="download" size={21} color={colors.primary} />
+                <AntDesign name={item.code === 'es' || item.code === 'fr' ? 'heart' : 'hearto'} size={21} color="red" />
             </View>
         </TouchableOpacity>
     )
@@ -35,9 +35,9 @@ export default function LanguageScreen({ navigation }) {
                 <Text style={styles.subHeading}>Language by your location </Text>
                 <Item
                     item={{
-                        code: 'fr',
-                        name: 'French',
-                        native: 'Français',
+                        code: 'sk',
+                        name: 'Slovak',
+                        native: 'Slovenčina',
                     }}
                 ></Item>
 
@@ -66,7 +66,7 @@ export default function LanguageScreen({ navigation }) {
 const language = StyleSheet.create({
     item: {
         backgroundColor: colors.white,
-        paddingVertical: 15,
+        paddingVertical: 13,
         paddingHorizontal: 15,
         marginVertical: 5,
         borderRadius: 10,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     input: {
-        height: 45,
+        height: 44,
         borderWidth: 1,
         borderColor: colors.black,
         borderRadius: 10,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     subHeading: {
-        fontWeight: '500',
+        fontWeight: '600',
         fontSize: 14,
         marginBottom: 3,
     },

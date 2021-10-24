@@ -30,8 +30,8 @@ export default Heading
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50,
-        paddingBottom: 15,
+        paddingTop: 48,
+        paddingBottom: 13,
         paddingHorizontal: 20,
         marginBottom: 15,
         backgroundColor: 'white',
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
         //alignItems: 'center',
     },
     heading: {
-        fontSize: 20,
+        fontSize: 19,
         fontWeight: '600',
         marginRight: 5,
     },
     language: {
         textTransform: 'uppercase',
         fontWeight: '700',
-        fontSize: 14,
+        fontSize: 13.5,
         color: colors.primary,
     },
     /* back: {
